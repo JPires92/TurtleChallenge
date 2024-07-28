@@ -1,10 +1,18 @@
 using Newtonsoft.Json;
 using TurtleChallenge.Models;
+using TurtleChallenge.Utilities;
 
 namespace TurtleChallenge.Services
 {
     public class InputService
     {
+         private readonly IFileReader _fileReader;
+
+        public InputService(IFileReader fileReader)
+        {
+            _fileReader = fileReader;
+        }
+
         /// <summary>
         /// Read game settings file
         /// </summary>
@@ -14,7 +22,8 @@ namespace TurtleChallenge.Services
         public GameSettings ReadGameSettings(string filePath)
         {
             filePath = "Data\\" + filePath + ".json";
-            var json = File.ReadAllText(filePath);
+            //var json = File.ReadAllText(filePath);
+             var json = _fileReader.ReadAllText(filePath);
             var settings = JsonConvert.DeserializeObject<GameSettings>(json);
             
             if (settings == null)
@@ -34,7 +43,8 @@ namespace TurtleChallenge.Services
         public List<MoveSequence> ReadMoveSequences(string filePath)
         {
             filePath =  "Data\\" + filePath + ".json";
-            var json = File.ReadAllText(filePath);
+            //var json = File.ReadAllText(filePath);
+            var json = _fileReader.ReadAllText(filePath);
             var moveSequences = JsonConvert.DeserializeObject<List<MoveSequence>>(json);
             
             if (moveSequences == null)

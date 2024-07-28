@@ -1,6 +1,8 @@
 ﻿namespace TurtleChallenge;
 using TurtleChallenge.Services;
 using TurtleChallenge.Models;
+using TurtleChallenge.Utilities;
+
 class Program
 {
     static void Main(string[] args)
@@ -12,7 +14,8 @@ class Program
             return;
         }
 
-        InputService inputService = new InputService();
+        IFileReader fileReader = new FileReader();
+        InputService inputService = new InputService(fileReader);
         GameService gameService = new GameService();
 
         try
