@@ -22,8 +22,7 @@ namespace TurtleChallenge.Services
         public GameSettings ReadGameSettings(string filePath)
         {
             filePath = "Data\\" + filePath + ".json";
-            //var json = File.ReadAllText(filePath);
-             var json = _fileReader.ReadAllText(filePath);
+            var json = _fileReader.ReadFile(filePath);
             var settings = JsonConvert.DeserializeObject<GameSettings>(json);
             
             if (settings == null)
@@ -43,8 +42,7 @@ namespace TurtleChallenge.Services
         public List<MoveSequence> ReadMoveSequences(string filePath)
         {
             filePath =  "Data\\" + filePath + ".json";
-            //var json = File.ReadAllText(filePath);
-            var json = _fileReader.ReadAllText(filePath);
+            var json = _fileReader.ReadFile(filePath);
             var moveSequences = JsonConvert.DeserializeObject<List<MoveSequence>>(json);
             
             if (moveSequences == null)
