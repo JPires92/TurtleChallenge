@@ -39,7 +39,7 @@ The `game-settings.json` file defines the game settings, including the board siz
 
 ### Movement Sequences (moves.json)
 
-The `game-settings.json` moves.json file contains a list of movement sequences that the turtle must follow. Each sequence is a list of commands (m to move and r to rotate).
+The `moves.json` file contains a list of movement sequences that the turtle must follow. Each sequence is a list of commands (m to move and r to rotate).
 
 #### Example File:
 
