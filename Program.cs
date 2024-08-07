@@ -31,8 +31,6 @@ class Program
                 
                 var result = gameService.PlayGame(settings, sequence);
                 Console.WriteLine("Sequence {0}: {1}",nSequence, result);
-                //Read the game settings again for the next sequence
-                settings = inputService.ReadGameSettings(args[0]);
                 nSequence++;
             }
         }

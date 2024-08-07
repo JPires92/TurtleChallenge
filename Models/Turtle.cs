@@ -41,8 +41,8 @@ namespace TurtleChallenge.Models{
             }
 
 
-            Position = startPosition;
-            Direction = startDirection;
+            Position = new Position(startPosition.X, startPosition.Y);
+            Direction = new Direction(startDirection.CurrentDirection);
         }
 
         #region Methods
