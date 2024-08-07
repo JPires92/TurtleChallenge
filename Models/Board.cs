@@ -21,6 +21,11 @@ namespace TurtleChallenge.Models{
         public List<Position> Mines { get; set; } = new List<Position>();
 
         /// <summary>
+        /// Constructor without parameters
+        /// </summary>
+        public Board() { }
+
+        /// <summary>
         /// Constructor with parameters and validations
         /// </summary>
         /// <param name="width"></param>

@@ -12,9 +12,9 @@ namespace TurtleChallenge.Services
         /// <returns></returns>
         public string PlayGame(GameSettings settings, MoveSequence sequence)
         {
-            Position boardDimensions= new Position(settings.Width, settings.Height);
-            Turtle turtle = new Turtle(boardDimensions, settings.StartingPosition, settings.StartingDirection);
-            Board board =new Board(settings.Width, settings.Height, settings.ExitPoint, settings.Mines);
+            Position boardDimensions= new Position(settings.board.Width, settings.board.Height);
+            Turtle turtle = new Turtle(boardDimensions, settings.turtle.Position, settings.turtle.Direction);
+             Board board =new Board(settings.board.Width, settings.board.Height, settings.board.ExitPoint, settings.board.Mines);
 
             foreach (var move in sequence.Moves)
             {

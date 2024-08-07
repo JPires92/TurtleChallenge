@@ -1,5 +1,3 @@
-using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
 using TurtleChallenge.Enums;
 
 namespace TurtleChallenge.Models{
@@ -8,12 +6,17 @@ namespace TurtleChallenge.Models{
         /// <summary>
         /// Turtle position(x,y)
         /// </summary>
-        public Position Position { get; set; }
+        public Position Position { get; set; } = new Position();
         /// <summary>
         /// Turtle direction
         /// Ex.: 1 == East
         /// </summary>
-        public Direction Direction { get; set; }
+        public Direction Direction { get; set; } = new Direction();
+
+        /// <summary>
+        /// Constructor without parameters
+        /// </summary>
+        public Turtle(){}
 
        /// <summary>
        /// Constructor with parameters.

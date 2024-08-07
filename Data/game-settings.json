@@ -1,19 +1,29 @@
 {
-    "Width": 5,
-    "Height": 4,
-    "StartingPosition": {
-        "X": 0,
-        "Y": 1
-    },
-    "StartingDirection": {
-        "CurrentDirection": 0
-    },
-    "ExitPoint": {
+    "Board": {
+      "Width": 5,
+      "Height": 4,
+      "ExitPoint": {
         "X": 4,
         "Y": 2
+      },
+      "Mines": [
+        {
+          "X": 1,
+          "Y": 2
+        },
+        {
+          "X": 3,
+          "Y": 1
+        }
+      ]
     },
-    "Mines": [
-        { "X": 1, "Y": 2 },
-        { "X": 3, "Y": 1 }
-    ]
-}
+    "Turtle": {
+      "Position": {
+        "X": 0,
+        "Y": 1
+      },
+      "Direction": {
+        "CurrentDirection": 0
+      }
+    }  
+  }
