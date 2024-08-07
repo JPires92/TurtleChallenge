@@ -24,15 +24,33 @@ namespace TurtleChallenge.Tests.Services
             // Arrange
             var filePath = "game-settings";
             var fileContent = @"{
-                ""Width"": 5,
-                ""Height"": 4,
-                ""StartingPosition"": { ""X"": 0, ""Y"": 1 },
-                ""StartingDirection"": { ""CurrentDirection"": 0 },
-                ""ExitPoint"": { ""X"": 4, ""Y"": 2 },
-                ""Mines"": [
-                    { ""X"": 1, ""Y"": 2 },
-                    { ""X"": 3, ""Y"": 1 }
-                ]
+                ""Board"": {
+                    ""Width"": 5,
+                    ""Height"": 4,
+                    ""ExitPoint"": {
+                        ""X"": 4,
+                        ""Y"": 2
+                    },
+                    ""Mines"": [
+                        {
+                            ""X"": 1,
+                            ""Y"": 2
+                        },
+                        {
+                            ""X"": 3,
+                            ""Y"": 1
+                        }
+                    ]
+                },
+                ""Turtle"": {
+                    ""Position"": {
+                        ""X"": 0,
+                        ""Y"": 1
+                    },
+                    ""Direction"": {
+                        ""CurrentDirection"": 0
+                    }
+                }
             }";
             _mockFileReader.Setup(fr => fr.ReadFile("Data\\game-settings.json")).Returns(fileContent);
 
@@ -41,14 +59,14 @@ namespace TurtleChallenge.Tests.Services
 
             // Assert
             Assert.NotNull(settings);
-            Assert.Equal(5, settings.Width);
-            Assert.Equal(4, settings.Height);
-            Assert.Equal(0, settings.StartingPosition.X);
-            Assert.Equal(1, settings.StartingPosition.Y);
-            Assert.Equal(DirectionEnum.North, settings.StartingDirection.CurrentDirection);
-            Assert.Equal(4, settings.ExitPoint.X);
-            Assert.Equal(2, settings.ExitPoint.Y);
-            Assert.Collection(settings.Mines,
+            Assert.Equal(5, settings.board.Width);
+            Assert.Equal(4, settings.board.Height);
+            Assert.Equal(0, settings.turtle.Position.X);
+            Assert.Equal(1, settings.turtle.Position.Y);
+            Assert.Equal(DirectionEnum.North, settings.turtle.Direction.CurrentDirection);
+            Assert.Equal(4, settings.board.ExitPoint.X);
+            Assert.Equal(2, settings.board.ExitPoint.Y);
+            Assert.Collection(settings.board.Mines,
                 mine => { Assert.Equal(1, mine.X); Assert.Equal(2, mine.Y); },
                 mine => { Assert.Equal(3, mine.X); Assert.Equal(1, mine.Y); }
             );

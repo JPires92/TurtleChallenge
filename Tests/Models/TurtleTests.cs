@@ -18,8 +18,9 @@ namespace TurtleChallenge.Tests.Models
             var turtle = new Turtle(boardDimensions, startPosition, startDirection);
 
             // Assert
-            Assert.Equal(startPosition, turtle.Position);
-            Assert.Equal(startDirection, turtle.Direction);
+            Assert.Equal(startPosition.X, turtle.Position.X);
+            Assert.Equal(startPosition.Y, turtle.Position.Y);
+            Assert.Equal(startDirection.CurrentDirection, turtle.Direction.CurrentDirection);
         }
 
         [Fact]

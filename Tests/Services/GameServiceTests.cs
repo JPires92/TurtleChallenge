@@ -7,6 +7,7 @@ namespace TurtleChallenge.Tests.Services
 {
     public class GameServiceTests
     {
+        
         private readonly GameService _gameService;
 
         public GameServiceTests()
@@ -20,12 +21,18 @@ namespace TurtleChallenge.Tests.Services
             // Arrange
             var settings = new GameSettings
             {
-                Width = 5,
-                Height = 5,
-                StartingPosition = new Position { X = 0, Y = 0 },
-                StartingDirection = new Direction { CurrentDirection = DirectionEnum.East },
-                ExitPoint = new Position { X = 1, Y = 1 },
-                Mines = new List<Position>()
+                board = new Board
+                {
+                    Width = 5,
+                    Height = 5,
+                    ExitPoint = new Position { X = 1, Y = 1 },
+                    Mines = new List<Position>()
+                },
+                turtle = new Turtle
+                {
+                    Position = new Position { X = 0, Y = 0 },
+                    Direction = new Direction { CurrentDirection = DirectionEnum.East }
+                }
             };
 
             var sequence = new MoveSequence
@@ -46,17 +53,23 @@ namespace TurtleChallenge.Tests.Services
             // Arrange
             var settings = new GameSettings
             {
-                Width = 5,
-                Height = 5,
-                StartingPosition = new Position { X = 0, Y = 0 },
-                StartingDirection = new Direction { CurrentDirection = DirectionEnum.East },
-                ExitPoint = new Position { X = 4, Y = 4 },
-                Mines = new List<Position> { new Position { X = 1, Y = 0 } }
+                board = new Board
+                {
+                    Width = 5,
+                    Height = 5,
+                    ExitPoint = new Position { X = 4, Y = 4 },
+                    Mines = new List<Position> { new Position { X = 2, Y = 0 } }
+                },
+                turtle = new Turtle
+                {
+                    Position = new Position { X = 0, Y = 0 },
+                    Direction = new Direction { CurrentDirection = DirectionEnum.East }
+                }
             };
 
             var sequence = new MoveSequence
             {
-                Moves = new List<char> { 'm' }
+                Moves = new List<char> { 'm', 'm' }
             };
 
             // Act
@@ -72,12 +85,18 @@ namespace TurtleChallenge.Tests.Services
             // Arrange
             var settings = new GameSettings
             {
-                Width = 5,
-                Height = 5,
-                StartingPosition = new Position { X = 0, Y = 0 },
-                StartingDirection = new Direction { CurrentDirection = DirectionEnum.West },
-                ExitPoint = new Position { X = 4, Y = 4 },
-                Mines = new List<Position>()
+                board = new Board
+                {
+                    Width = 5,
+                    Height = 5,
+                    ExitPoint = new Position { X = 4, Y = 4 },
+                    Mines = new List<Position> ()
+                },
+                turtle = new Turtle
+                {
+                    Position = new Position { X = 0, Y = 0 },
+                    Direction = new Direction { CurrentDirection = DirectionEnum.West }
+                }
             };
 
             var sequence = new MoveSequence
@@ -98,12 +117,18 @@ namespace TurtleChallenge.Tests.Services
             // Arrange
             var settings = new GameSettings
             {
-                Width = 5,
-                Height = 5,
-                StartingPosition = new Position { X = 0, Y = 0 },
-                StartingDirection = new Direction { CurrentDirection = DirectionEnum.East },
-                ExitPoint = new Position { X = 4, Y = 4 },
-                Mines = new List<Position>()
+                board = new Board
+                {
+                    Width = 5,
+                    Height = 5,
+                    ExitPoint = new Position { X = 4, Y = 4 },
+                    Mines = new List<Position>{ new Position { X = 2, Y = 0 } }
+                },
+                turtle = new Turtle
+                {
+                    Position = new Position { X = 0, Y = 0 },
+                    Direction = new Direction { CurrentDirection = DirectionEnum.East }
+                }
             };
 
             var sequence = new MoveSequence
@@ -124,12 +149,18 @@ namespace TurtleChallenge.Tests.Services
             // Arrange
             var settings = new GameSettings
             {
-                Width = 5,
-                Height = 5,
-                StartingPosition = new Position { X = 0, Y = 0 },
-                StartingDirection = new Direction { CurrentDirection = DirectionEnum.East },
-                ExitPoint = new Position { X = 4, Y = 4 },
-                Mines = new List<Position>()
+                board = new Board
+                {
+                    Width = 5,
+                    Height = 5,
+                    ExitPoint = new Position { X = 4, Y = 4 },
+                    Mines = new List<Position>{ new Position { X = 2, Y = 0 } }
+                },
+                turtle = new Turtle
+                {
+                    Position = new Position { X = 0, Y = 0 },
+                    Direction = new Direction { CurrentDirection = DirectionEnum.East }
+                }
             };
 
             var sequence = new MoveSequence
