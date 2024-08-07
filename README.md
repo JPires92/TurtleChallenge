@@ -14,23 +14,33 @@ The `game-settings.json` file defines the game settings, including the board siz
 
 ```json
 {
-    "Width": 5,
-    "Height": 4,
-    "StartingPosition": {
-        "X": 0,
-        "Y": 1
-    },
-    "StartingDirection": {
-        "CurrentDirection": 0
-    },
-    "ExitPoint": {
+    "Board": {
+      "Width": 5,
+      "Height": 4,
+      "ExitPoint": {
         "X": 4,
         "Y": 2
+      },
+      "Mines": [
+        {
+          "X": 1,
+          "Y": 2
+        },
+        {
+          "X": 3,
+          "Y": 1
+        }
+      ]
     },
-    "Mines": [
-        { "X": 1, "Y": 2 },
-        { "X": 3, "Y": 1 }
-    ]
+    "Turtle": {
+      "Position": {
+        "X": 0,
+        "Y": 1
+      },
+      "Direction": {
+        "CurrentDirection": 0
+      }
+    }  
 }
 ```
 #### **Note: The turtle's starting direction in the game settings file should be 0 if North, 1 if East, 2 if South, or 3 if West.
