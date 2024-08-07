@@ -2,6 +2,7 @@
 using TurtleChallenge.Services;
 using TurtleChallenge.Models;
 using TurtleChallenge.Utilities;
+using TurtleChallenge.Exceptions;
 
 class Program
 {
@@ -28,9 +29,17 @@ class Program
             int nSequence = 1;
             foreach (var sequence in moveSequences)
             {
+                try
+                {
+                    var result = gameService.PlayGame(settings, sequence);
+                    Console.WriteLine("Sequence {0}: {1}",nSequence, result);
+
+                }
+                catch(ChallengeGameException ex)
+                {
+                    Console.WriteLine("Sequence {0}: {1}",nSequence, ex.Message);
+                }
                 
-                var result = gameService.PlayGame(settings, sequence);
-                Console.WriteLine("Sequence {0}: {1}",nSequence, result);
                 nSequence++;
             }
         }

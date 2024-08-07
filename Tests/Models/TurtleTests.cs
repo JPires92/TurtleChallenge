@@ -1,6 +1,7 @@
 using TurtleChallenge.Models;
 using TurtleChallenge.Enums;
 using Xunit;
+using TurtleChallenge.Exceptions;
 
 namespace TurtleChallenge.Tests.Models
 {
@@ -32,7 +33,7 @@ namespace TurtleChallenge.Tests.Models
             var startDirection = new Direction { CurrentDirection = DirectionEnum.North };
 
             // Act & Assert
-            var exception = Assert.Throws<ArgumentException>(() => new Turtle(boardDimensions, startPosition, startDirection));
+            var exception = Assert.Throws<ChallengeDataException>(() => new Turtle(boardDimensions, startPosition, startDirection));
             Assert.Equal("Invalid turtle starting position X value.", exception.Message);
         }
 
@@ -45,7 +46,7 @@ namespace TurtleChallenge.Tests.Models
             var startDirection = new Direction { CurrentDirection = DirectionEnum.North };
 
             // Act & Assert
-            var exception = Assert.Throws<ArgumentException>(() => new Turtle(boardDimensions, startPosition, startDirection));
+            var exception = Assert.Throws<ChallengeDataException>(() => new Turtle(boardDimensions, startPosition, startDirection));
             Assert.Equal("Invalid turtle starting position Y value.", exception.Message);
         }
 
@@ -58,7 +59,7 @@ namespace TurtleChallenge.Tests.Models
             var startDirection = new Direction { CurrentDirection = (DirectionEnum)5 }; // Invalid direction
 
             // Act & Assert
-            var exception = Assert.Throws<ArgumentException>(() => new Turtle(boardDimensions, startPosition, startDirection));
+            var exception = Assert.Throws<ChallengeDataException>(() => new Turtle(boardDimensions, startPosition, startDirection));
             Assert.Equal("The turtle's starting direction in the game settings file should be 0 if North, 1 if East, 2 if South, or 3 if West.", exception.Message);
         }
 

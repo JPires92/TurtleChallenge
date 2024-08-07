@@ -1,4 +1,5 @@
 using TurtleChallenge.Enums;
+using TurtleChallenge.Exceptions;
 
 namespace TurtleChallenge.Models{
     public class Turtle
@@ -27,20 +28,21 @@ namespace TurtleChallenge.Models{
         public Turtle(Position boardDimensions,Position startPosition, Direction startDirection)
         {
             //Validates the position X
-            if(startPosition.X < 0 || startPosition.X > boardDimensions.X-1){
-                throw new ArgumentException("Invalid turtle starting position X value.");
+            if(startPosition.X < 0 || ((startPosition.X > boardDimensions.X-1) && boardDimensions.X >0))
+            {
+                throw new ChallengeDataException("Invalid turtle starting position X value.");
             }
 
             //Validates the position Y
-            if(startPosition.Y <0 || startPosition.Y > boardDimensions.Y-1)
+            if(startPosition.Y <0 || ((startPosition.Y > boardDimensions.Y-1) && boardDimensions.Y > 0))
             {
-                throw new ArgumentException("Invalid turtle starting position Y value.");
+                throw new ChallengeDataException("Invalid turtle starting position Y value.");
             }
 
             DirectionEnum _direction = startDirection.CurrentDirection;
             if(_direction != DirectionEnum.North && _direction != DirectionEnum.South 
             && _direction != DirectionEnum.West && _direction != DirectionEnum.East){
-                throw new ArgumentException("The turtle's starting direction in the game settings file should be 0 if North, 1 if East, 2 if South, or 3 if West.");
+                throw new ChallengeDataException("The turtle's starting direction in the game settings file should be 0 if North, 1 if East, 2 if South, or 3 if West.");
             }
 
 

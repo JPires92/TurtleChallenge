@@ -1,5 +1,6 @@
 using Xunit;
 using TurtleChallenge.Models;
+using TurtleChallenge.Exceptions;
 
 namespace TurtleChallenge.Tests.Models{
     public class BoardTests
@@ -41,7 +42,7 @@ namespace TurtleChallenge.Tests.Models{
             };
 
             // Act & Assert
-            var exception = Assert.Throws<Exception>(() => new Board(width, height, exitPoint, mines));
+            var exception = Assert.Throws<ChallengeDataException>(() => new Board(width, height, exitPoint, mines));
             Assert.Equal("Board width must be greater then 0.", exception.Message);
         }
 
@@ -59,7 +60,7 @@ namespace TurtleChallenge.Tests.Models{
             };
 
             // Act & Assert
-            var exception = Assert.Throws<Exception>(() => new Board(width, height, exitPoint, mines));
+            var exception = Assert.Throws<ChallengeDataException>(() => new Board(width, height, exitPoint, mines));
             Assert.Equal("Board height must be greater then 0.", exception.Message);
         }
 
@@ -76,7 +77,7 @@ namespace TurtleChallenge.Tests.Models{
             };
 
             // Act & Assert
-            var exception = Assert.Throws<Exception>(() => new Board(width, height, exitPoint, mines));
+            var exception = Assert.Throws<ChallengeDataException>(() => new Board(width, height, exitPoint, mines));
             Assert.Equal("Mine(6,1) value out of the board.", exception.Message);
         }
 

@@ -1,4 +1,5 @@
 using TurtleChallenge.Enums;
+using TurtleChallenge.Exceptions;
 using TurtleChallenge.Models;
 using TurtleChallenge.Services;
 using Xunit;
@@ -104,11 +105,9 @@ namespace TurtleChallenge.Tests.Services
                 Moves = new List<char> { 'm' }
             };
 
-            // Act
-            var result = _gameService.PlayGame(settings, sequence);
-
-            // Assert
-            Assert.Equal("Turtle moved out of bounds.", result);
+            // Act & Assert
+            var exception = Assert.Throws<ChallengeGameException>(() => _gameService.PlayGame(settings, sequence));
+            Assert.Equal("Turtle moved out of bounds.", exception.Message);
         }
 
         [Fact]
@@ -163,16 +162,15 @@ namespace TurtleChallenge.Tests.Services
                 }
             };
 
+
             var sequence = new MoveSequence
             {
                 Moves = new List<char> { 'm', 'x' }
             };
-
-            // Act
-            var result = _gameService.PlayGame(settings, sequence);
-
-            // Assert
-            Assert.Equal("Invalid value in move sequence-'x'.", result);
+            
+            // Act & Assert
+            var exception = Assert.Throws<ChallengeGameException>(() => _gameService.PlayGame(settings, sequence));
+            Assert.Equal("Invalid value in move sequence-'x'.", exception.Message);
         }
     }
 }
